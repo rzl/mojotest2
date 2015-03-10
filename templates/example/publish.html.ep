@@ -1,0 +1,24 @@
+% layout 'default';
+% title 'public';
+
+% unless (session 'name') {
+<form action="login" method=post>
+  <dl>
+    <dt>Username:
+    <dd><input type=text name=username>
+    <dt>Password:
+    <dd><input type=password name=password>
+    <dd><input type=submit value=Login onclick="window.location.href="publish"";>
+  </dl>
+</form>
+%} else {
+  <form action="publish" method=post class=add-entry>
+    <dl>
+      <dt>Title:
+      <dd><input type=text size=30 name=title>
+      <dt>Text:
+      <dd><textarea name=text rows=5 cols=40></textarea>
+      <dd><input type=submit value=Share>
+    </dl>
+  </form>
+%}

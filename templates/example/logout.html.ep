@@ -1,0 +1,6 @@
+% layout 'default';
+% title 'public';
+
+<script language="javascript">
+           window.location.href="index"; 
+</script> 
