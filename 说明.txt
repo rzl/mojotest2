@@ -5,3 +5,7 @@ morbo -w ./lib -w ./templates ./script/my_app
 更新
 1，main div 垂直溢出。
 2. 错误帐密登录报错。
+3.注册功能
+
+更新
+1.连接池瞎搞的。

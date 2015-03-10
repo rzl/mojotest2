@@ -27,9 +27,9 @@ sub login {
 sub publish{
     my $self = shift;
     my $db = $self->AppDB->connect_db();
-    my $sql = 'insert into entries (title, text) values (?, ?)';
+    my $sql = 'insert into entries (title, text,author) values (?, ?,?)';
     my $sth = $db->prepare($sql) or die $db->errstr;
-    $sth->execute($self->param('title'), $self->param('text'))or die $sth->errstr;
+    $sth->execute($self->param('title'), $self->param('text'),$self->session->{name})or die $sth->errstr;
 }
 
 sub register{

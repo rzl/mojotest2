@@ -12,17 +12,16 @@ sub welcome {
 sub index {
     my $self = shift;
 	my $db = $self->AppDB->connect_db();
-    my $sql = 'select id, title, text from entries order by id desc';
+    my $sql = 'select id, title, text,author from entries order by id desc';
     my $sth = $db->prepare($sql) or die $db->errstr;
        $sth->execute or die $sth->errstr;
-	   $self->stash(entries=> $sth-> fetchall_hashref('id'));
+	   $self->stash(entries=> $sth-> fetchall_arrayref);
 	   $self->render();
 	   $db->disconnect();
 }
 
 sub publish {
   my $self = shift;
-  
   $self->render();
 }
 

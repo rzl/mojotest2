@@ -1,11 +1,35 @@
 % layout 'default';
 % title 'index';
 
-<ul class=entries>
-% for my $id (keys %$entries) {
+<script src="/javascript/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".title").click(function(){
+  $(this).parent(".article").children(".text").toggle();
+  });
+});
+</script>
+
+<ul class=entries type="none" padding-left>
+%for (my $i=$#$entries;$i>=0;$i--){
 <li>
-%= $entries->{$id}->{'id'};
-%= $entries->{$id}->{'title'};
-%= $entries->{$id}->{'text'};
+<div class="article" >
+<div class="title">
+%= $entries->[$i]->[1];
+</div>
+<div class="text">
+%= $entries->[$i]->[2];
+</div>
+<div class="author">
+作者：
+%= $entries->[$i]->[3];
+</div>
+</div>
 %}
+
+</li>
 </ul>
+
+<script type="text/javascript">
+$(".text").hide();
+</script>
