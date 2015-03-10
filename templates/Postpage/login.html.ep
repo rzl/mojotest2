@@ -1,7 +1,0 @@
-% layout 'default';
-% title 'index';
-	
-	
-<script language="javascript">
-           window.location.href="<%= $msg %>"; 
-</script> 
