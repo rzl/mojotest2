@@ -1,0 +1,39 @@
+% layout 'default';
+% title 'Welcome';
+
+% unless (session 'name') {
+%= javascript begin
+function check_register() {
+   if (document.form1.username.value==""){
+       alert("请检查用户名是否为空！");
+       return false;
+      }
+    if (document.form1.password.value.length < 3 || document.form1.password.value.length > 16){
+       alert("您的密码长度小于3！");
+	   return false;
+      }
+    if (document.form1.password.value != document.form1.password2.value){
+       alert("两次密码不一样！");
+	   return false;
+      }  
+    return true;
+}
+
+% end
+<form name="form1" action="register" method="post" onSubmit="return check_register()">
+  <dl>
+    <dt>Username:
+    <dd><input type=text name=username>
+    <dt>Password:
+    <dd><input type=password name=password id="password">
+	<dt>Password Agian:
+	<dd><input type=password name=password2 id="password2">
+    <dd><input type=submit value=register>
+  </dl>
+</form>
+
+%} else {
+<script language="javascript">
+           window.location.href="index"; 
+</script> 
+%}
