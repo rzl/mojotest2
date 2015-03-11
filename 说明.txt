@@ -9,3 +9,4 @@ morbo -w ./lib -w ./templates ./script/my_app
 
 更新
 1.连接池瞎搞的。
+2.删除功能

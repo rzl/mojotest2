@@ -19,7 +19,6 @@ sub startup {
   print "not found database file .";
   $self->AppDB->initdata();
   }
-
   # Normal route to controller
   $r->get('/')->to('example#welcome');
   $r->get('/index')->to('example#index');

@@ -9,7 +9,8 @@ $(document).ready(function(){
   });
 });
 </script>
-
+%my $author='';
+%$author=session 'name' if session 'name';
 <ul class=entries type="none" padding-left>
 %for (my $i=$#$entries;$i>=0;$i--){
 <li>
@@ -23,7 +24,7 @@ $(document).ready(function(){
 <div class="author">
 作者：
 %= $entries->[$i]->[3];
-%if ($entries->[$i]->[3] eq session 'name'){
+%if ($entries->[$i]->[3] eq $author){
 <a href="/del?id=<%=$entries->[$i]->[0]%>">删除</a>
 %}
 </div>
