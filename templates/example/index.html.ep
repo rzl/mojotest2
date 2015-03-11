@@ -23,6 +23,9 @@ $(document).ready(function(){
 <div class="author">
 作者：
 %= $entries->[$i]->[3];
+%if ($entries->[$i]->[3] eq session 'name'){
+<a href="/del?id=<%=$entries->[$i]->[0]%>">删除</a>
+%}
 </div>
 </div>
 %}

@@ -11,13 +11,13 @@ sub welcome {
 
 sub index {
     my $self = shift;
-	my $db = $self->AppDB->connect_db();
+	my $dbh = $self->AppDB->getcon();
     my $sql = 'select id, title, text,author from entries order by id desc';
-    my $sth = $db->prepare($sql) or die $db->errstr;
+    my $sth = $dbh->prepare($sql) or die $dbh->errstr;
        $sth->execute or die $sth->errstr;
 	   $self->stash(entries=> $sth-> fetchall_arrayref);
 	   $self->render();
-	   $db->disconnect();
+	   $self->AppDB->putcon($dbh);
 }
 
 sub publish {
@@ -35,6 +35,19 @@ sub logout{
 	my $self=shift;
 	$self->session->{name}='';
 	$self->render();
+}
+sub del{
+	my $self=shift;
+	if ($self->session->{name}){
+		if ($self->users->isauthor($self->param('id'),$self->session->{name})){
+			$self->users->delaricle($self->param('id'),$self->session->{name});
+			$self->render(msg=>'已删除文章');
+		} else {
+		$self->render(msg=>'这不是你的文章。。。');
+		}
+	} else {
+	$self->render(msg => '未登录');
+	}
 }
 
 1;

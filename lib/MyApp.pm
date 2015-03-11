@@ -30,7 +30,7 @@ sub startup {
   $r->get('/logout')->to('example#logout');
   $r->get('/register')->to('example#register');
   $r->post('/register')->to('Postpage#register');
-  #$r->get()->();
+  $r->get('/del')->to('example#del');
 }
 
 1;
