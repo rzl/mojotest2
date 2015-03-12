@@ -58,6 +58,10 @@ sub putcon{
 	}
 }
 
+sub getpoolnum{
+	return $#pool;
+}
+
 sub initdata {
 my $dbh = DBI->connect("dbi:SQLite:dbname=".$dbfile) or
      die $DBI::errstr;
